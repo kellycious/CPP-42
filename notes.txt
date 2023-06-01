@@ -1,0 +1,16 @@
+
+BASICS
+
+- compilation flag: c++ -Wall -Werror -Wextra -std=c++98
+- UpperCamelCase format for class names
+- Output messages needs "\n" at the end
+- Forbidden functions/library: C++11 / Boost / printf / alloc / free
+							   using namespace <ns_name> / keyword: "friend"
+- STL (Containers / Algorithms): only in CPP 08 and 09
+- Class design: Orthodox Canonical Form from CPP 02 to 09
+- Each header is independent from others | for double inclusion, use include guards
+- OOP = organize code around objects (data + behavior)
+		objects are created from classes in C++
+
+CPP 00
+
