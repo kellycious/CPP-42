@@ -1,5 +1,5 @@
 
-BASICS
+42 requirements
 
 - compilation flag: c++ -Wall -Werror -Wextra -std=c++98
 - UpperCamelCase format for class names
@@ -9,8 +9,27 @@ BASICS
 - STL (Containers / Algorithms): only in CPP 08 and 09
 - Class design: Orthodox Canonical Form from CPP 02 to 09
 - Each header is independent from others | for double inclusion, use include guards
+
+BASIC 
+
 - OOP = organize code around objects (data + behavior)
 		objects are created from classes in C++
+- Class = define data + functions 
+		  ex for a car:data => color, model, speed
+		  		   car:functions => accelerating, braking
+- Object = Class instance | car created from a a blueprint (class)
+- Encapsulation = bundling data + methods within a class 
+- Inheritance = allow classes to inherit data/functions from other classes
+			    subclass : childclass, superclass : parent class
+- Polymorphism = 
 
 CPP 00
+-stdio streams: input/output stream => #include <iostream> to use input/output OP
+				printf(C) => std::cout | std::cerr for error | scanf(C) => std::cin
+				std::endl for EOL char, move cursor to next line
+				std::cout << "Hello" << std::endl
 
+ex00
+iterator is like a pointer
+
+ex01
