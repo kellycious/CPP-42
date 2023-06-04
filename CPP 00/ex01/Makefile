@@ -1,9 +1,8 @@
 
 #1 --- FILE
 
-NAME = megaphone
-FILE = PhoneBook.cpp \
-	   Contact.cpp 
+NAME = phonebook
+FILE = 
 
 OBJS :=  	${addprefix ./OBJ/,${FILE:%.cpp=%.o}}
 DEP   = 	${addprefix ./OBJ/,${OBJS:%.o=%.d}}
