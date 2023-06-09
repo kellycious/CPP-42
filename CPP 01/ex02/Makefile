@@ -1,8 +1,8 @@
 
 #1 --- FILE
 
-NAME = zombie horde
-FILE = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp zombieHorde.cpp
+NAME = Brain
+FILE = main.cpp
 
 OBJS :=  	${addprefix ./OBJ/,${FILE:%.cpp=%.o}}
 DEP   = 	${addprefix ./OBJ/,${OBJS:%.o=%.d}}
