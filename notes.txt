@@ -54,3 +54,12 @@ adding 1900, because if it is offset 1900 in the struct tm
 ex00
 customized constructor to identify the zombie
 new function => use malloc and free + call constructor/destructor
+
+ex03
+& = when using ref, it's an alias for an existing obj 
+* = need to allocate memory bc it is a pointer 
+
+using initialization list for constructor HumanA
+	if const or ref var used, initialization list only
+	more efficient, direct initialization instead of assignment
+	order specificity
