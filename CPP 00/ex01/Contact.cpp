@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 02:00:20 by khuynh            #+#    #+#             */
-/*   Updated: 2023/06/09 18:48:05 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/06/09 20:11:15 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,27 +48,69 @@ std::string	Contact::input_dsecret(void)
 	return (this->darkest_secret);
 }
 
-void	Contact::input_contact(void)
+int	Contact::input_contact(void)
 {
 	std::string input;
 	
 	std::cout << "Enter first name: "<< std::endl;
-	std::cin >> input;
+	std::cin.ignore();
+	std::getline(std::cin, input);
+	while (input.empty())
+	{
+		std::cout << "\033[31mField cannot be empty\033[0m" << std::endl;
+		std::cout << "Enter first name: "<< std::endl;
+		std::getline(std::cin, input);
+		if (!input.empty())
+			break ;
+	}
 	this->first_name = input;
 
 	std::cout << "Enter last name: "<< std::endl;
-	std::cin >> input;
+	std::getline(std::cin, input);
+	while (input.empty())
+	{
+		std::cout << "\033[31mField cannot be empty\033[0m" << std::endl;
+		std::cout << "Enter last name: "<< std::endl;
+		std::getline(std::cin, input);
+		if (!input.empty())
+			break ;
+	}
 	this->last_name = input;
 
 	std::cout << "Enter nickname: "<< std::endl;
-	std::cin >> input;
+	std::getline(std::cin, input);
+	while (input.empty())
+	{
+		std::cout << "\033[31mField cannot be empty\033[0m" << std::endl;
+		std::cout << "Enter nickname: "<< std::endl;
+		std::getline(std::cin, input);
+		if (!input.empty())
+			break ;
+	}
 	this->nickname = input;
 
 	std::cout << "Enter phone number: "<< std::endl;
-	std::cin >> input;
+	std::getline(std::cin, input);
+	while (input.empty())
+	{
+		std::cout << "\033[31mField cannot be empty\033[0m" << std::endl;
+		std::cout << "Enter phone number: "<< std::endl;
+		std::getline(std::cin, input);
+		if (!input.empty())
+			break ;
+	}
 	this->phone_nb = input;
 	
 	std::cout << "Enter darkest secret:"<< std::endl;
-	std::cin >> input;
+	std::getline(std::cin, input);
+	while (input.empty())
+	{
+		std::cout << "Field cannot be empty" << std::endl;
+		std::cout << "Enter darkest secret: "<< std::endl;
+		std::getline(std::cin, input);
+		if (!input.empty())
+			break ;
+	}
 	this->darkest_secret = input;
+	return (0);
 }

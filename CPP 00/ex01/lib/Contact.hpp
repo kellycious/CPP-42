@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 18:45:36 by khuynh            #+#    #+#             */
-/*   Updated: 2023/06/09 18:46:13 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/06/09 19:16:29 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class	Contact
 		std::string input_nickname(void);
 		std::string input_nb(void);
 		std::string input_dsecret(void);
-		void		input_contact(void);
+		int			input_contact(void);
 };
 
 #endif
