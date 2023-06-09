@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 02:00:20 by khuynh            #+#    #+#             */
-/*   Updated: 2023/06/09 20:11:15 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/06/09 20:15:31 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	Contact::input_contact(void)
 	std::getline(std::cin, input);
 	while (input.empty())
 	{
-		std::cout << "Field cannot be empty" << std::endl;
+		std::cout << "\033[31mField cannot be empty\033[0m" << std::endl;
 		std::cout << "Enter darkest secret: "<< std::endl;
 		std::getline(std::cin, input);
 		if (!input.empty())
