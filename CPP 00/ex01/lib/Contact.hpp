@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/02 19:37:53 by khuynh            #+#    #+#             */
-/*   Updated: 2023/06/04 02:36:46 by khuynh           ###   ########.fr       */
+/*   Created: 2023/06/09 18:45:36 by khuynh            #+#    #+#             */
+/*   Updated: 2023/06/09 18:46:13 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 # include <iostream>
 # include <iostream>
 
@@ -33,19 +33,6 @@ class	Contact
 		std::string input_nb(void);
 		std::string input_dsecret(void);
 		void		input_contact(void);
-};
-
-class	Phonebook
-{
-	private:
-		Contact contact[8];
-		int		index;
-	
-	public:
-		Phonebook(void);
-		~Phonebook(void);
-		void	add_contact(Phonebook *phonebook);
-		int		search_contact(Phonebook *phonebook);
 };
 
 #endif

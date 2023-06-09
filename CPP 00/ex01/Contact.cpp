@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 02:00:20 by khuynh            #+#    #+#             */
-/*   Updated: 2023/06/04 02:25:28 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/06/09 18:48:05 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phonebook.hpp"
+#include "lib/Contact.hpp"
 
 Contact::Contact(void)
 {
@@ -55,7 +55,6 @@ void	Contact::input_contact(void)
 	std::cout << "Enter first name: "<< std::endl;
 	std::cin >> input;
 	this->first_name = input;
-
 
 	std::cout << "Enter last name: "<< std::endl;
 	std::cin >> input;
