@@ -2,7 +2,7 @@
 #1 --- FILE
 
 NAME = Human
-FILE = 
+FILE = HumanA.cpp HumanB.cpp Weapon.cpp main.cpp
 
 OBJS :=  	${addprefix ./OBJ/,${FILE:%.cpp=%.o}}
 DEP   = 	${addprefix ./OBJ/,${OBJS:%.o=%.d}}

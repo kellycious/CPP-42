@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 23:43:12 by khuynh            #+#    #+#             */
-/*   Updated: 2023/06/09 23:56:36 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/06/19 17:04:26 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define HUMANB_HPP
 
 #include <iostream>
-#include <Weapon.hpp>
+#include "Weapon.hpp"
 
 class HumanB
 {
@@ -25,7 +25,7 @@ class HumanB
 		HumanB(std::string name);
 		~HumanB();
 		void	attack(void);
-		void	Weaponer(Weapon &weapon);
+		void	setWeapon(Weapon &weapon);
 };
 
 #endif

@@ -6,14 +6,15 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 19:37:53 by khuynh            #+#    #+#             */
-/*   Updated: 2023/06/09 18:53:25 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/06/19 17:14:08 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 # include <iostream>
-# include <iostream>
+# include <cstdlib>
+# include <iomanip>
 # include "Contact.hpp"
 
 class	Phonebook

@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 23:35:15 by khuynh            #+#    #+#             */
-/*   Updated: 2023/06/19 16:20:45 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/06/19 17:10:06 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main()
 		HumanB jim("Jim");
 		jim.setWeapon(club);
 		jim.attack();
+		std::cout << "hello" << std::endl;
 		club.setType("some other type of club");
 		jim.attack();
 	}

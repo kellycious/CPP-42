@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 18:05:09 by khuynh            #+#    #+#             */
-/*   Updated: 2023/06/09 18:47:52 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/06/19 17:17:15 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,14 @@ int	main()
 	{
 		std::string input;
 		std::cout << "Please enter your request (\033[32mADD\033[0m | \033[34mSEARCH\033[0m | \033[33mEXIT\033[0m)" << std::endl;
-		std::cin >> input;
+		std::getline(std::cin, input);
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			return (0);
+		}
+		if (input.empty())
+			continue ;
 		if (input == "ADD")
 			allo.add_contact(&allo);
 		else if (input == "SEARCH")
