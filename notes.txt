@@ -63,3 +63,6 @@ using initialization list for constructor HumanA
 	if const or ref var used, initialization list only
 	more efficient, direct initialization instead of assignment
 	order specificity
+
+ex04
+fstream library to manip files 
