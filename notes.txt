@@ -66,3 +66,6 @@ using initialization list for constructor HumanA
 
 ex04
 fstream library to manip files 
+ifstream existing file manip
+ofstream create a new output file (filename)
+std::istreambuf_iterator<char>()   =  default constructor for end iterator
