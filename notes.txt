@@ -69,3 +69,14 @@ fstream library to manip files
 ifstream existing file manip
 ofstream create a new output file (filename)
 std::istreambuf_iterator<char>()   =  default constructor for end iterator
+
+[[[[ CPP 02 ]]]]
+
+Orthodox Canonical Form
+	Default constructor
+	Copy constructor => constructor that calls an existing objects in parameters
+	Copy assignment operator => assign one object to another of the same class 
+	Destructor 
+
+ex00
+fixed

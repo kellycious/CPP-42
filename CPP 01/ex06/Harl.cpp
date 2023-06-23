@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 22:42:46 by khuynh            #+#    #+#             */
-/*   Updated: 2023/06/23 20:55:00 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/06/23 21:18:39 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int  Lvl(std::string &level)
     for (int i = 0; i< 4; ++i)
         if (lvl[i] == level)
             return (i);
-    return (-1);
+	return (-1);
 }
 
 void Harl::complain(std::string level)
