@@ -55,6 +55,9 @@ ex00
 customized constructor to identify the zombie
 new function => use malloc and free + call constructor/destructor
 
+ex02
+reference is fixed, cannot pick other value like a pointer
+
 ex03
 & = when using ref, it's an alias for an existing obj 
 * = need to allocate memory bc it is a pointer 
@@ -76,9 +79,34 @@ Orthodox Canonical Form
 	Default constructor
 	Copy constructor => constructor that calls an existing objects in parameters
 	Copy assignment operator => assign one object to another of the same class 
-	Destructor 
+	Destructor
+
+Function overload (ad-hoc polymorphism)
+	1 name for multiple different functions but they take different parameters
 
 ex00
-fixed
+- fixed-point
+8 bits => 4 bits | 4 bits  (range on the left) (accuracy on the right)
 6,5 = 0110 1000
 			↳ 0.5 0.25 0.125 0.625
+most range, least accurate 127.5
+less range, most accurate  1.9921875
+
+- floating point
+mantissa (5), exponent (3)
+2,5 = 01010010 > 0.1010[010] > 010 = 2, so move the point 2x to the right > 010.10
+
+fixed-point faster than floating
+
+
+ex01
+- Operator overload
+std::ostream& operator<<(std::ostream &o, Fixed const &f);
+used to apply basic operators to class objects (arithmetic, assignment, comparison, logical, bitwise)
+
+
+Pour pouvoir imprimer l'objet directement
+shift 1 bit right = /2
+shift 1 bit left = *2
+
+[[[[ CPP 03 ]]]]

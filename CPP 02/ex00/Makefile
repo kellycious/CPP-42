@@ -1,8 +1,8 @@
 
 #1 --- FILE
 
-NAME =
-FILE = 
+NAME = Fixed
+FILE = Fixed.cpp main.cpp
 
 OBJS :=  	${addprefix ./OBJ/,${FILE:%.cpp=%.o}}
 DEP   = 	${addprefix ./OBJ/,${OBJS:%.o=%.d}}
