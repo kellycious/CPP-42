@@ -110,3 +110,19 @@ shift 1 bit right = /2
 shift 1 bit left = *2
 
 [[[[ CPP 03 ]]]]
+
+Inheritance
+	derived class from one by adding extra ppties
+
+	Class [new classname] : public [Base classname]
+	{ constructor, cpy const, destructor + extra functions };
+
+	base class = superclass | derived class = subclass
+	protected: can be used in Inheritance
+	private: cannot be accessed outside its own class
+
+[[[[ CPP 04 ]]]]
+
+Virtual functions
+	declared in base function, replaced by matching functions in derived class
+	

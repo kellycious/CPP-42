@@ -5,29 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 00:34:14 by khuynh            #+#    #+#             */
-/*   Updated: 2023/07/15 23:35:28 by khuynh           ###   ########.fr       */
+/*   Created: 2023/07/16 22:45:40 by khuynh            #+#    #+#             */
+/*   Updated: 2023/07/16 23:49:01 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
+#include "WrongCat.hpp"
 
-int main()
+int	main()
 {
-	ClapTrap clap("Machin chouette");
-	ClapTrap clap2(clap);
-	ClapTrap clap3("Princesse Crapule");
-	
-	clap2 = clap3;
-	
-	clap.attack("Princesse Crapule");
-	clap2.takeDamage(5);
+	const Animal* meta = new Animal();
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+	const WrongAnimal *k = new WrongCat();
 
-	clap2.attack("Machin chouette");
-	clap.takeDamage(5);
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
+	std::cout << k->getType() << " " << std::endl;
+	i->makeSound();
+	j->makeSound();
+	k->makeSound();
+	meta->makeSound();
 
-	clap.attack("Princesse Crapule");
-	clap2.takeDamage(5);
-	
-	return 0;
+	return (0);
 }

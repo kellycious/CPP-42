@@ -6,28 +6,24 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 00:34:14 by khuynh            #+#    #+#             */
-/*   Updated: 2023/07/15 23:35:28 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/07/16 20:54:10 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "FragTrap.hpp"
 
 int main()
 {
-	ClapTrap clap("Machin chouette");
-	ClapTrap clap2(clap);
-	ClapTrap clap3("Princesse Crapule");
+	ClapTrap first("Kelly");
+	Scavtrap second("Nour");
+	FragTrap third("Love");
 	
-	clap2 = clap3;
+	first.attack("Nour");
+	second.takeDamage(50);
+	second.guardGate();
+	third.highFivesGuys();
+	second.attack("Kelly");
+	first.takeDamage(20);
 	
-	clap.attack("Princesse Crapule");
-	clap2.takeDamage(5);
-
-	clap2.attack("Machin chouette");
-	clap.takeDamage(5);
-
-	clap.attack("Princesse Crapule");
-	clap2.takeDamage(5);
-	
-	return 0;
+	return (0);
 }

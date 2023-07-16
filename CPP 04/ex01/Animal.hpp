@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 00:34:14 by khuynh            #+#    #+#             */
-/*   Updated: 2023/07/15 23:35:28 by khuynh           ###   ########.fr       */
+/*   Created: 2023/07/16 22:46:11 by khuynh            #+#    #+#             */
+/*   Updated: 2023/07/16 23:28:31 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
-int main()
+#include <string>
+#include <iostream>
+
+class Animal
 {
-	ClapTrap clap("Machin chouette");
-	ClapTrap clap2(clap);
-	ClapTrap clap3("Princesse Crapule");
-	
-	clap2 = clap3;
-	
-	clap.attack("Princesse Crapule");
-	clap2.takeDamage(5);
+	protected:
+		std::string type;
 
-	clap2.attack("Machin chouette");
-	clap.takeDamage(5);
+	public:
+		Animal();
+		Animal(const Animal &cpy);
+		~Animal();
 
-	clap.attack("Princesse Crapule");
-	clap2.takeDamage(5);
-	
-	return 0;
-}
+		Animal& operator=(const Animal &cpy);
+
+		virtual void makeSound() const;
+		virtual std::string getType() const;
+};
+
+#endif

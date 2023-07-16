@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 00:34:14 by khuynh            #+#    #+#             */
-/*   Updated: 2023/07/15 23:35:28 by khuynh           ###   ########.fr       */
+/*   Created: 2023/07/16 22:47:42 by khuynh            #+#    #+#             */
+/*   Updated: 2023/07/16 23:29:33 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#ifndef DOG_HPP
+# define DOG_HPP
 
-int main()
+#include <iostream>
+#include <string>
+#include "Animal.hpp"
+
+class Dog : public Animal 
 {
-	ClapTrap clap("Machin chouette");
-	ClapTrap clap2(clap);
-	ClapTrap clap3("Princesse Crapule");
-	
-	clap2 = clap3;
-	
-	clap.attack("Princesse Crapule");
-	clap2.takeDamage(5);
+	public:
+		Dog();
+		Dog(const Dog &cpy);
+		~Dog();
 
-	clap2.attack("Machin chouette");
-	clap.takeDamage(5);
+		Dog& operator=(const Dog &cpy);
 
-	clap.attack("Princesse Crapule");
-	clap2.takeDamage(5);
-	
-	return 0;
-}
+		void	makeSound() const;
+		std::string	getType() const;
+};
+
+#endif 
