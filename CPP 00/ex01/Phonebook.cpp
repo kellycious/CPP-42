@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   Phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 02:27:50 by khuynh            #+#    #+#             */
-/*   Updated: 2023/06/09 19:11:56 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/04 20:01:19 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,16 @@ int	Phonebook::search_contact(Phonebook *phonebook)
 		std::cout << std::endl;
 	}
 	std::cout << "Enter contact index: " << std::endl;
-	std::cin >> input;
+	std::getline(std::cin, input);
+	if (std::cin.fail())
+		return (std::cin.clear(), 0);
+	while (input.empty())
+	{
+		std::cout << "\033[31mPlease enter a number\033[0m" << std::endl;
+		std::getline(std::cin, input);
+		if (std::cin.fail())
+			return (std::cin.clear(), 0);
+	}
 	for (int i = 0; i < (int)input.length(); i++)
 		if (!std::isdigit(input[i]))
 			return (std::cout << "\033[31mInvalid command\033[0m" << std::endl, 0);

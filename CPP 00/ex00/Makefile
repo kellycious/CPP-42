@@ -5,15 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/04 20:02:08 by khuynh            #+#    #+#              #
-#    Updated: 2023/08/04 20:02:10 by khuynh           ###   ########.fr        #
+#    Created: 2023/08/04 19:49:28 by khuynh            #+#    #+#              #
+#    Updated: 2023/08/04 19:49:48 by khuynh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #1 --- FILE
 
-NAME = phonebook
-FILE = Contact.cpp Phonebook.cpp main.cpp
+NAME = megaphone
+FILE = megaphone.cpp
 
 OBJS :=  	${addprefix ./OBJ/,${FILE:%.cpp=%.o}}
 DEP   = 	${addprefix ./OBJ/,${OBJS:%.o=%.d}}
