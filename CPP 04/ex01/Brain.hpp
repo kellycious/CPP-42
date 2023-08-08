@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/16 22:45:40 by khuynh            #+#    #+#             */
-/*   Updated: 2023/07/19 19:39:24 by khuynh           ###   ########.fr       */
+/*   Created: 2023/07/17 00:07:58 by khuynh            #+#    #+#             */
+/*   Updated: 2023/07/19 19:40:31 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
-#include "Dog.hpp"
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
-int	main()
+#include <string>
+#include <iostream>
+
+class Brain
 {
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	private:
+		std::string ideas[100];
 
-	delete j;
-	delete i;
+	public:
+		Brain();
+		Brain(const Brain &cpy);
+		~Brain();
 
-	return (0);
-}
+		Brain &operator=(const Brain &cpy);
+		
+};
+
+#endif
