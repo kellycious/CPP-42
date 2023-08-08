@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/09 23:35:25 by khuynh            #+#    #+#             */
-/*   Updated: 2023/06/10 00:12:26 by khuynh           ###   ########.fr       */
+/*   Created: 2023/06/09 21:31:18 by khuynh            #+#    #+#             */
+/*   Updated: 2023/08/08 15:18:41 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_HPP
-# define WEAPON_HPP
+#include "../Zombie.hpp"
 
-#include <iostream>
-
-class	Weapon
+Zombie	*zombieHorde(int N, std::string name)
 {
-	private:
-		std::string type;
-		
-	public:
-		Weapon(std::string type);
-		~Weapon(void);
-		std::string const &getType(void);
-		void	setType(std::string type);
-};
-
-#endif
+	Zombie *zombies = new Zombie[N];
+	std::cout << name << " horde of Zombie is born" << std::endl;
+	for (int i = 0; i < N; i++)
+		zombies[i].Namer(name);
+	return zombies;
+}

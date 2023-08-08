@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/09 23:35:15 by khuynh            #+#    #+#             */
-/*   Updated: 2023/06/19 17:10:06 by khuynh           ###   ########.fr       */
+/*   Created: 2023/06/09 23:43:12 by khuynh            #+#    #+#             */
+/*   Updated: 2023/08/08 16:34:58 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
+
+#include <iostream>
+#include <string>
 #include "Weapon.hpp"
-#include "HumanA.hpp"
-#include "HumanB.hpp"
 
-int	main()
+class HumanB
 {
-	{
-		Weapon club = Weapon("crude spiked club");
+	private:
+		Weapon	*weapon;
+		std::string name;
+	public:
+		HumanB(std::string name);
+		~HumanB();
+		void	attack(void);
+		void	setWeapon(Weapon &weapon);
+};
 
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
-	}
-	{
-		Weapon club = Weapon("crude spiked club");
-
-		HumanB jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		std::cout << "hello" << std::endl;
-		club.setType("some other type of club");
-		jim.attack();
-	}
-	return 0;
-}
+#endif

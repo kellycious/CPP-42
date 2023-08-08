@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/09 20:39:44 by khuynh            #+#    #+#             */
-/*   Updated: 2023/06/09 23:16:27 by khuynh           ###   ########.fr       */
+/*   Created: 2023/06/09 23:36:00 by khuynh            #+#    #+#             */
+/*   Updated: 2023/08/08 16:59:04 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HUMANA_HPP
+# define HUMANA_HPP
 
-int main()
+#include <iostream>
+#include <string>
+#include "Weapon.hpp"
+
+class HumanA
 {
-	std::string input;
-	std::cout << "Please enter a name for your horde" << std::endl;
-	std::cin >> input;
-	Zombie *zombies = zombieHorde(5, input);
-	for (int i = 0; i < 5; i++)
-		zombies[i].announce();
-	delete [] zombies;
-	return 0;
-}
+	private:
+		Weapon	&weapon;
+		std::string name;
+	public:
+		HumanA(std::string name, Weapon &weapon);
+		~HumanA();
+		void	attack(void);
+};
+
+#endif

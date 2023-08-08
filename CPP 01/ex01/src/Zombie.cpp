@@ -6,11 +6,13 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 20:40:03 by khuynh            #+#    #+#             */
-/*   Updated: 2023/06/09 21:23:05 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/08 15:19:17 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "../Zombie.hpp"
+
+Zombie::Zombie(void) { return;}
 
 Zombie::Zombie(std::string name)
 {
@@ -23,6 +25,11 @@ Zombie::~Zombie(void)
 {
 	std::cout << this->name << " is dead" << std::endl;
 	return;
+}
+
+void Zombie::Namer(std::string name)
+{
+	this->name = name;
 }
 
 void Zombie::announce(void)

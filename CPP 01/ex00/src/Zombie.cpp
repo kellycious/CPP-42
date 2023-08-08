@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/09 21:31:18 by khuynh            #+#    #+#             */
-/*   Updated: 2023/06/09 23:17:27 by khuynh           ###   ########.fr       */
+/*   Created: 2023/06/09 20:40:03 by khuynh            #+#    #+#             */
+/*   Updated: 2023/08/08 15:17:15 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "../Zombie.hpp"
 
-Zombie	*zombieHorde(int N, std::string name)
+Zombie::Zombie(std::string name)
 {
-	Zombie *zombies = new Zombie[N];
-	std::cout << name << " horde of Zombie is born" << std::endl;
-	for (int i = 0; i < N; i++)
-		zombies[i].Namer(name);
-	return zombies;
+	this->name = name;
+	std::cout << this->name << " is born" << std::endl;
+	return;
+}
+
+Zombie::~Zombie(void) 
+{
+	std::cout << this->name << " is dead" << std::endl;
+	return;
+}
+
+void Zombie::announce(void)
+{
+	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

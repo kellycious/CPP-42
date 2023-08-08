@@ -1,8 +1,19 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/08/04 20:46:55 by khuynh            #+#    #+#              #
+#    Updated: 2023/08/08 15:17:46 by khuynh           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 #1 --- FILE
 
 NAME = zombie
-FILE = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+FILE = src/main.cpp src/Zombie.cpp src/newZombie.cpp src/randomChump.cpp
 
 OBJS :=  	${addprefix ./OBJ/,${FILE:%.cpp=%.o}}
 DEP   = 	${addprefix ./OBJ/,${OBJS:%.o=%.d}}

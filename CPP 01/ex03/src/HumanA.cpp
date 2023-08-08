@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/09 20:39:44 by khuynh            #+#    #+#             */
-/*   Updated: 2023/06/09 21:21:20 by khuynh           ###   ########.fr       */
+/*   Created: 2023/06/09 23:35:54 by khuynh            #+#    #+#             */
+/*   Updated: 2023/08/08 16:59:25 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "../lib/HumanA.hpp"
+#include "../lib/Weapon.hpp"
 
-int main()
+HumanA::HumanA(std::string name, Weapon &weapon) : weapon(weapon), name(name)
 {
-	std::string input;
-	std::cout << "Please enter a name for your zombie" << std::endl;
-	std::cin >> input;
-	Zombie *newy = newZombie(input);
-	newy->announce();
-	delete newy;
-	randomChump("random");
-	return 0;
+	return;
+}
+
+HumanA::~HumanA() { return; }
+
+void	HumanA::attack(void)
+{
+	std::cout << name << " attacks with their " << weapon.getType() << std::endl;
 }

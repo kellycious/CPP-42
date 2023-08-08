@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 19:25:51 by khuynh            #+#    #+#             */
-/*   Updated: 2023/06/21 21:19:31 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/04 20:53:11 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	main(int ac, char **av)
 		return (std::cout << "Too many arguments" << std::endl, 0);
 	
 	std::ifstream inputfile(av[1]);
-	std::ofstream outputfile(av[1] + std::string(".replace"));
+	std::ofstream outputfile;
+	outputfile.open((av[1] + std::string(".replace")).c_str());
 	inputfile.open(av[1]);
 	
 	if (!inputfile.is_open() || !outputfile.is_open())
