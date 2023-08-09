@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 22:46:11 by khuynh            #+#    #+#             */
-/*   Updated: 2023/07/16 23:28:31 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/10 00:10:30 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ class Animal
 	public:
 		Animal();
 		Animal(const Animal &cpy);
-		~Animal();
+		virtual ~Animal();
 
 		Animal& operator=(const Animal &cpy);
 
 		virtual void makeSound() const;
-		virtual std::string getType() const;
+		std::string getType() const;
 };
 
 #endif

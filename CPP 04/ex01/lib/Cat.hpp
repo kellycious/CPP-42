@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 22:49:16 by khuynh            #+#    #+#             */
-/*   Updated: 2023/07/16 23:29:26 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/10 00:07:53 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ class Cat : public Animal
 
 		Cat& operator=(const Cat &cpy);
 
-		void	makeSound() const;
-		std::string	getType() const;
+		void makeSound() const;
 };
 
 #endif 
