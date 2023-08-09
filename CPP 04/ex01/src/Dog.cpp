@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/16 23:17:44 by khuynh            #+#    #+#             */
-/*   Updated: 2023/07/16 23:52:16 by khuynh           ###   ########.fr       */
+/*   Created: 2023/07/16 23:19:26 by khuynh            #+#    #+#             */
+/*   Updated: 2023/08/09 22:18:20 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "../lib/Dog.hpp"
 
-Cat::Cat()
+Dog::Dog()
 {
-	std::cout << "Cat default constructor called" << std::endl;
-	this->type = "Cat";
+	std::cout << "Dog default constructor called" << std::endl;
+	this->type = "Dog";
 }
 
-Cat::Cat(const Cat &cpy)
+Dog::Dog(const Dog &cpy)
 {
-	std::cout << "Cat copy constructor called" << std::endl;
+	std::cout << "Dog copy constructor called" << std::endl;
 	*this = cpy;
 }
 
-Cat::~Cat()
+Dog::~Dog()
 {
-	std::cout << "Cat default destructor called" << std::endl;
+	std::cout << "Dog default destructor called" << std::endl;
 }
 
-Cat& Cat ::operator=(const Cat &cpy)
+Dog& Dog ::operator=(const Dog &cpy)
 {
 	std::cout << "Assignment operator called" << std::endl;
 	if (this != &cpy)
@@ -37,12 +37,12 @@ Cat& Cat ::operator=(const Cat &cpy)
 	return *this;
 }
 
-void Cat::makeSound() const
+void Dog::makeSound() const
 {
-	std::cout << "meow" << std::endl;
+	std::cout << "woof" << std::endl;
 }
 
-std::string Cat::getType() const
+std::string Dog::getType() const
 {
-	return ("Cat");
+	return ("Dog");
 }

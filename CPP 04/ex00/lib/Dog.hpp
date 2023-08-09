@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 22:47:42 by khuynh            #+#    #+#             */
-/*   Updated: 2023/07/16 23:29:33 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/10 00:04:53 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ class Dog : public Animal
 		Dog& operator=(const Dog &cpy);
 
 		void	makeSound() const;
-		std::string	getType() const;
 };
 
 #endif 

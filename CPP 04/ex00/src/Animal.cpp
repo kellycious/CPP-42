@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 23:11:13 by khuynh            #+#    #+#             */
-/*   Updated: 2023/08/09 16:02:22 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/10 00:20:45 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ Animal& Animal ::operator=(const Animal &cpy)
 
 void Animal::makeSound() const
 {
-	std::cout << "Basic Animal sound" << std::endl;
+	std::cout << "animal sound" << std::endl;
 }
 
 std::string Animal::getType() const
 {
-	return ("Animal");
+	return (this->type);
 }
