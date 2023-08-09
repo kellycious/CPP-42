@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 21:45:11 by khuynh            #+#    #+#             */
-/*   Updated: 2023/07/09 21:58:29 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/09 00:10:19 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ Fixed::~Fixed()
 
 float Fixed::toFloat(void) const
 {
-	return (float)this->value / (1 << this->bits);
+	return ((float)this->value / (float)(1 << this->bits));
 }
 
 int Fixed::toInt(void) const
