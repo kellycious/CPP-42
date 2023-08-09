@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,26 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "../lib/WrongAnimal.hpp"
 
-Animal::Animal()
+WrongAnimal::WrongAnimal()
 {
-	std::cout << "Animal default constructor called" << std::endl;
-	this->type = "Animal";
+	std::cout << "WrongAnimal default constructor called" << std::endl;
+	this->type = "WrongAnimal";
 }
 
-Animal::Animal(const Animal &cpy)
+WrongAnimal::WrongAnimal(const WrongAnimal &cpy)
 {
-	std::cout << "Animal copy constructor called" << std::endl;
+	std::cout << "WrongAnimal copy constructor called" << std::endl;
 	*this = cpy;
 }
 
-Animal::~Animal()
+WrongAnimal::~WrongAnimal()
 {
-	std::cout << "Animal default destructor called" << std::endl;
+	std::cout << "WrongAnimal default destructor called" << std::endl;
 }
 
-Animal& Animal ::operator=(const Animal &cpy)
+WrongAnimal& WrongAnimal ::operator=(const WrongAnimal &cpy)
 {
 	std::cout << "Assignment operator called" << std::endl;
 	if (this != &cpy)
@@ -37,12 +37,12 @@ Animal& Animal ::operator=(const Animal &cpy)
 	return *this;
 }
 
-void Animal::makeSound() const
+void WrongAnimal::makeSound() const
 {
-	std::cout << "Basic Animal sound" << std::endl;
+	std::cout << "Basic WrongAnimal sound" << std::endl;
 }
 
-std::string Animal::getType() const
+std::string WrongAnimal::getType() const
 {
-	return ("Animal");
+	return ("WrongAnimal");
 }

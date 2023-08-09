@@ -6,13 +6,13 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 22:45:40 by khuynh            #+#    #+#             */
-/*   Updated: 2023/07/16 23:49:01 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/09 16:02:47 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
-#include "Dog.hpp"
-#include "WrongCat.hpp"
+#include "../lib/Cat.hpp"
+#include "../lib/Dog.hpp"
+#include "../lib/WrongCat.hpp"
 
 int	main()
 {
