@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 23:38:09 by khuynh            #+#    #+#             */
-/*   Updated: 2023/07/16 22:52:55 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/09 15:46:41 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ class Scavtrap : public ClapTrap
 {		
 	public:
 		Scavtrap();
-		Scavtrap(std::string name);
+		Scavtrap(std::string const& name);
 		Scavtrap(Scavtrap const& cpy);
 		~Scavtrap();
 
 		Scavtrap& operator=(Scavtrap const& rhs);
 
+		void attack(const std::string& target);
 		void guardGate();
 };
 

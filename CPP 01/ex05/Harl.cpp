@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 22:42:46 by khuynh            #+#    #+#             */
-/*   Updated: 2023/08/08 17:34:41 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/09 15:20:39 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,10 @@ void Harl::complain(std::string lvl)
 	{
 		if (lvls[i] == lvl)
 			(this->*f[i])();
+		else if (lvl.compare("DEBUG") && lvl.compare("INFO") && lvl.compare("WARNING") && lvl.compare("ERROR"))
+		{
+			std::cout << "Please pick one arg [ DEBUG | INFO | WARNING | ERROR ]" << std::endl;
+			break ;
+		}
 	}
 }

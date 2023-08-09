@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 23:38:11 by khuynh            #+#    #+#             */
-/*   Updated: 2023/07/16 20:41:29 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/09 15:31:26 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,25 @@ Scavtrap& Scavtrap::operator=(Scavtrap const& rhs)
 		this->attackDamage = rhs.attackDamage;
 	}
 	return *this;
+}
+
+void Scavtrap::attack(const std::string& target)
+{
+	if (this->energyPoints <= 0)
+	{
+		std::cout << this->name << " has no attacks left !" << std::endl;
+		return ;
+	}
+	else if (this->hitPoints <= 0)
+	{
+		std::cout << this->name << " has no hp left!" << std::endl;
+		return ;
+	}
+	else
+	{
+		this->energyPoints--;
+		std::cout << "Scavtrap " << this->name << " attacks " << target << " [" << this->energyPoints << " attacks left]"<< std::endl;
+	}
 }
 
 void Scavtrap::guardGate()
