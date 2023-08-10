@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 00:07:58 by khuynh            #+#    #+#             */
-/*   Updated: 2023/07/19 19:40:31 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/10 17:13:16 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,12 @@ class Brain
 	public:
 		Brain();
 		Brain(const Brain &cpy);
-		~Brain();
+		virtual ~Brain();
 
 		Brain &operator=(const Brain &cpy);
+		
+		std::string getIdea(int i) const;
+		std::string setIdea(int i, std::string idea);
 		
 };
 

@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 22:45:40 by khuynh            #+#    #+#             */
-/*   Updated: 2023/08/10 00:06:31 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/10 17:16:53 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,50 @@
 
 int	main()
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	const WrongAnimal *k = new WrongCat();
+
+	Animal *array[4];
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (i % 2 == 0)
+		{
+			array[i] = new Cat();
+			array[i]->makeSound();
+			std::cout << std::endl;
+		}
+		else
+		{
+			array[i] = new Dog();
+			array[i]->makeSound();
+			std::cout << std::endl;
+		}
+	}
 
 	std::cout << std::endl;
 
-	std::cout << meta->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << k->getType() << " " << std::endl;
+	for (int i = 0; i < 4; i++)
+		delete array[i];
+	
+	std::cout << std::endl;
+	
+	Dog dog;
+	Dog cpy = dog;
 
 	std::cout << std::endl;
 	
-	meta->makeSound();
-	i->makeSound();
-	j->makeSound();
-	k->makeSound();
-
+	dog.setIdea(0, "I am a dog");
+	std::cout << dog.getIdea(0) << std::endl;
+	
 	std::cout << std::endl;
 
-	delete meta;
-	delete i;
-	delete j;
-	delete k;
+	Cat cat;
+	Cat kitty(cat);
+	
+	std::cout << std::endl;
 
+	cat.setIdea(0, "I am a cat");
+	std::cout << cat.getIdea(0) << std::endl;
+	std::cout << std::endl;
+	
 	return 0;
 }

@@ -2,7 +2,7 @@
 #1 --- FILE
 
 NAME = Animals
-FILE = src/main.cpp src/Animal.cpp src/Cat.cpp src/Dog.cpp src/WrongAnimal.cpp src/WrongCat.cpp
+FILE = src/main.cpp src/Animal.cpp src/Cat.cpp src/Dog.cpp src/WrongAnimal.cpp src/WrongCat.cpp src/Brain.cpp
 
 OBJS :=  	${addprefix ./OBJ/,${FILE:%.cpp=%.o}}
 DEP   = 	${addprefix ./OBJ/,${OBJS:%.o=%.d}}
