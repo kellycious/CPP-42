@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 21:45:11 by khuynh            #+#    #+#             */
-/*   Updated: 2023/08/09 00:10:19 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/10 15:17:02 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Fixed::Fixed(const int value)
 Fixed::Fixed(const float value)
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->value = std::roundf(value * (1 << this->bits));
+	this->value = roundf(value * (1 << this->bits));
 }
 
 Fixed &Fixed::operator=(const Fixed &f)
@@ -59,7 +59,6 @@ int Fixed::toInt(void) const
 
 int Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return this->value;
 }
 

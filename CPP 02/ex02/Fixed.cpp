@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 21:45:11 by khuynh            #+#    #+#             */
-/*   Updated: 2023/08/09 00:26:02 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/10 15:18:27 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Fixed::Fixed(const int value)
 
 Fixed::Fixed(const float value)
 {
-	this->value = std::roundf(value * (1 << this->bits));
+	this->value = roundf(value * (1 << this->bits));
 }
 
 Fixed &Fixed::operator=(const Fixed &f)

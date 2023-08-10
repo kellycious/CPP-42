@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 21:44:53 by khuynh            #+#    #+#             */
-/*   Updated: 2023/08/09 00:34:05 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/10 15:20:43 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int main( void )
 	std::cout << "b = " << b << std::endl;
 
 	std::cout << "Max = " << Fixed::max( a, b ) << std::endl;
+
+// 	std::cout << "b / 0  = " << b/0 << std::endl;
 	
 	return (0);
 }

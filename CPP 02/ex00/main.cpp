@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 21:44:53 by khuynh            #+#    #+#             */
-/*   Updated: 2023/07/08 18:50:22 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/10 15:07:47 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@ int main( void )
 	Fixed b (a);
 	Fixed c;
 	c = b;
+
+	std::cout << std::endl;
 	
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;
 	std::cout << c.getRawBits() << std::endl;
+
+	std::cout << std::endl;
 	
 	return (0); 
 }
