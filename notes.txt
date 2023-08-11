@@ -85,14 +85,14 @@ Function overload (ad-hoc polymorphism)
 	1 name for multiple different functions but they take different parameters
 
 ex00
-- fixed-point
+- fixed-point (fixed nb point after decimal)
 8 bits => 4 bits | 4 bits  (range on the left) (accuracy on the right)
 6,5 = 0110 1000
 			↳ 0.5 0.25 0.125 0.625
 most range, least accurate 127.5
 less range, most accurate  1.9921875
 
-- floating point
+- floating point (more precision than fixed, wider range of nb)
 mantissa (5), exponent (3)
 2,5 = 01010010 > 0.1010[010] > 010 = 2, so move the point 2x to the right > 010.10
 
