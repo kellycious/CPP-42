@@ -39,7 +39,7 @@ WrongAnimal& WrongAnimal ::operator=(const WrongAnimal &cpy)
 
 void WrongAnimal::makeSound() const
 {
-	std::cout << "quack" << std::endl;
+	std::cout << "wrong sound" << std::endl;
 }
 
 std::string WrongAnimal::getType() const

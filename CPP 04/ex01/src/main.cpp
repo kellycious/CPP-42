@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 22:45:40 by khuynh            #+#    #+#             */
-/*   Updated: 2023/08/10 17:16:53 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/11 17:14:55 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,17 @@ int	main()
 	std::cout << std::endl;
 	
 	Dog dog;
-	Dog cpy = dog;
+    Dog dog2;
+    Dog cpy = dog;
 
-	std::cout << std::endl;
-	
-	dog.setIdea(0, "I am a dog");
-	std::cout << dog.getIdea(0) << std::endl;
-	
-	std::cout << std::endl;
+    cpy = dog2;
+
+    std::cout << std::endl;
+    
+    dog.setIdea(0, "I am a dog");
+    std::cout << dog.getIdea(0) << std::endl;
+    
+    std::cout << std::endl;
 
 	Cat cat;
 	Cat kitty(cat);

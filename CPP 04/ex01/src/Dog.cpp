@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 23:19:26 by khuynh            #+#    #+#             */
-/*   Updated: 2023/08/10 17:14:29 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/11 17:14:07 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ Dog& Dog ::operator=(const Dog &cpy)
 	std::cout << "Assignment operator called" << std::endl;
 	if (this != &cpy)
 		this->type = cpy.type;
-	this->brain = new Brain();
-	*this->brain = *cpy.brain;
+	for (int i = 0; i < 100; i++)
+		this->brain->setIdea(i, cpy.getIdea(i));
 	return *this;
 }
 
