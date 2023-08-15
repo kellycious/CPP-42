@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 22:45:40 by khuynh            #+#    #+#             */
-/*   Updated: 2023/08/11 17:14:55 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/08/15 16:06:20 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ int	main()
 
     std::cout << std::endl;
     
-    dog.setIdea(0, "I am a dog");
-    std::cout << dog.getIdea(0) << std::endl;
+    dog.getBrain()->setIdea(0, "I am a dog");
+    std::cout << dog.getBrain()->getIdea(0) << std::endl;
     
     std::cout << std::endl;
 
@@ -60,8 +60,8 @@ int	main()
 	
 	std::cout << std::endl;
 
-	cat.setIdea(0, "I am a cat");
-	std::cout << cat.getIdea(0) << std::endl;
+	cat.getBrain()->setIdea(0, "I am a cat");
+	std::cout << cat.getBrain()->getIdea(0) << std::endl;
 	std::cout << std::endl;
 	
 	return 0;
