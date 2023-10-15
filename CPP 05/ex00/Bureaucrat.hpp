@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:10:14 by khuynh            #+#    #+#             */
-/*   Updated: 2023/10/09 19:06:35 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/10/15 14:01:35 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <string>
 # include <iostream>
+# include <sstream>
 # include <exception>
 
 class Bureaucrat
@@ -34,14 +35,14 @@ class Bureaucrat
 		{
 			public:
 				virtual const char* what() const throw()
-				{ return ("Grade is too high"); }
+				{ return ("\e[0;31mGrade is too high\033[0m"); }
 		};
 
 		class GradeTooLowException : public std::exception
 		{
 			public:
 				virtual const char* what() const throw()
-				{ return ("Grade is too low"); }
+				{ return ("\e[0;31mGrade is too low\033[0m"); }
 		};
 
 		void incrementGrade();

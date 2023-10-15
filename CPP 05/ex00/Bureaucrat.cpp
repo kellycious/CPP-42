@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:10:38 by khuynh            #+#    #+#             */
-/*   Updated: 2023/10/09 23:19:42 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/10/15 14:10:27 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,20 @@ Bureaucrat::Bureaucrat(std::string const &name, int grade) : _name(name), _grade
 	else if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 	else
+	{
 		this->_grade = grade;
-		std::cout << "Bureaucrat " << this->_name << " : created (grade: " << this->_grade << " )" << std::endl;
+		std::cout << "\e[0;32mCreating Bureaucrat " << this->_name << " - grade: \033[0m" << this->_grade << std::endl;
+	}
 };
 
 Bureaucrat::Bureaucrat(Bureaucrat const &cpy) : _name(cpy._name), _grade(cpy._grade)
 {
-	std::cout << "Bureaucrat " << this->_name << " : created by copy (grade: " << this->_grade << " )" << std::endl;
+	std::cout << "\e[0;32mBureaucrat " << this->_name << " : created by copy (grade: " << this->_grade << " )\033[0m" << std::endl;
 };
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Bureaucrat " << this->_name << " : destroyed" << std::endl;
+	std::cout << "\e[0;31mBureaucrat " << this->_name << " : destroyed\033[0m" << std::endl;
 };
 
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const &cpy)
@@ -70,6 +72,6 @@ void Bureaucrat::decrementGrade()
 
 std::ostream& operator<<(std::ostream &o, Bureaucrat const &b)
 {
-	o << b.getName() << ", bureaucrat grade " << b.getGrade() << std::endl;
+	o << "Bureaucrat " << b.getName() << " - grade: " << b.getGrade() << std::endl;
 	return o;
 };

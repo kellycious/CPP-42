@@ -2,7 +2,7 @@
 #1 --- FILE
 
 NAME = bureaucrat
-FILE = main.cpp Bureaucrat.cpp 
+FILE = main.cpp Bureaucrat.cpp
 
 OBJS :=  	${addprefix ./OBJ/,${FILE:%.cpp=%.o}}
 DEP   = 	${addprefix ./OBJ/,${OBJS:%.o=%.d}}
