@@ -125,4 +125,30 @@ Inheritance
 
 Virtual functions
 	declared in base function, replaced by matching functions in derived class
-	
+
+[[[[ CPP 05 ]]]]
+
+Nested Class
+	defined within a class
+	have access to private members of their enclosing class
+
+
+library exception = multiple functions to use
+
+each exception need to be a class in which you declare function like 1/
+then implement try/throw/catch blocks
+in catch block = catch (exception &name)
+				 { cout << name.what() }
+	 virtual const char* what() const throw();
+			return = string
+
+nested exception class template
+	in .h : 
+		class NameEXception : public std:: exception 
+		{
+			public:
+				function;
+		}
+	in main:
+		try {}
+		catch (exception &name){cout << name.what}
