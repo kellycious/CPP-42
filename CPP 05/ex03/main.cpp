@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:10:03 by khuynh            #+#    #+#             */
-/*   Updated: 2023/10/15 20:04:18 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/10/15 20:15:14 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,10 @@ int main()
 		std::cout << std::endl;
 		delete form;
 		std::cout << "-------------------------------" << std::endl;
+		
+		std::cout << "Invalid form name test" << std::endl;
+		AForm *form2 = intern.makeForm("prout", target);
+		delete form2;
 	}
 	catch (std::exception &e)
 	{
