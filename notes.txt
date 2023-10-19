@@ -152,3 +152,8 @@ nested exception class template
 	in main:
 		try {}
 		catch (exception &name){cout << name.what}
+
+[[[[ CPP 06 ]]]]
+
+only one specific type of casting
+scalar type = single value, simple type (int, float, bool, char, etc.)
