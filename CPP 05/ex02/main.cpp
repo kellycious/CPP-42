@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:10:03 by khuynh            #+#    #+#             */
-/*   Updated: 2023/10/15 17:38:50 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/10/19 17:14:00 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ int main()
 	std::string formrequest;
 	std::getline(std::cin, formrequest);
 	if (strint(formrequest) < 1 || strint(formrequest) > 3)
-		throw std::invalid_argument("Invalid argument, execute program again");
+	{
+		std::cout << "Invalid form request" << std::endl;
+		return 1;
+	}
 	std::cout << std::endl;
 
 	try

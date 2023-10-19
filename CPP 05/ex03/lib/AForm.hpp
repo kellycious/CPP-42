@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:52:22 by khuynh            #+#    #+#             */
-/*   Updated: 2023/10/15 19:52:30 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/10/19 17:05:10 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <fstream>
 # include <exception>
 # include <cstdlib>
+# include <ctime>
 # include "Bureaucrat.hpp"
 
 class Bureaucrat;

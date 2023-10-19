@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:10:03 by khuynh            #+#    #+#             */
-/*   Updated: 2023/10/15 20:15:14 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/10/19 17:12:54 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,16 @@ int main()
 	std::string grade;
 	std::getline(std::cin, grade);
 	std::cout << "\033[35mInsert Number of Form requested:" << std::endl;
-	std::cout << "1. ShrubberyCreationForm" << std::endl;
-	std::cout << "2. RobotomyRequestForm" << std::endl;
-	std::cout << "3. PresidentialPardonForm\033[0m" << std::endl;
+	std::cout << "1. RobotomyRequestForm" << std::endl;
+	std::cout << "2. PresidentialPardonForm" << std::endl;
+	std::cout << "3. ShruberryCreationForm\033[0m" << std::endl;
 	std::string formrequest;
 	std::getline(std::cin, formrequest);
 	if (strint(formrequest) < 1 || strint(formrequest) > 3)
-		throw std::invalid_argument("Invalid argument, execute program again");
+	{
+		std::cout << "Invalid form request" << std::endl;
+		return 1;
+	}
 	std::cout << std::endl;
 
 	try
@@ -70,6 +73,7 @@ int main()
 		std::cout << "-------------------------------" << std::endl;
 		
 		std::cout << "Invalid form name test" << std::endl;
+		std::cout << std::endl;
 		AForm *form2 = intern.makeForm("prout", target);
 		delete form2;
 	}
