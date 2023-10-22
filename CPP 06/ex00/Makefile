@@ -1,8 +1,8 @@
 
 #1 --- FILE
 
-NAME = 
-FILE = 
+NAME = Converter
+FILE = ScalarConverter.cpp main.cpp
 
 OBJS :=  	${addprefix ./OBJ/,${FILE:%.cpp=%.o}}
 DEP   = 	${addprefix ./OBJ/,${OBJS:%.o=%.d}}
