@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 18:07:23 by khuynh            #+#    #+#             */
-/*   Updated: 2023/10/22 16:39:05 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/10/22 19:19:16 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ ScalarConverter &ScalarConverter::operator=(ScalarConverter const &cpy)
 	return *this;
 }
 
+static void Cerror()
+{
+	std::cout << "char: Impossible" << std::endl;
+	std::cout << "int: Impossible" << std::endl;
+	std::cout << "float: Impossible" << std::endl;
+	std::cout << "double: Impossible" << std::endl;
+}
+
 static void Cchar(std::string literal)
 {
 	std::cout << "char: '" << literal[0] << "'" << std::endl;
@@ -34,81 +42,75 @@ static void Cint(std::string literal)
 {
 	int nb = atoi(literal.c_str());
 	std::cout << "char: ";
-	if (nb < 32 || nb == 126)
-		std::cout << "Non displayable" << std::endl;
-	else if (nb < 0 || nb > 127)
+	if (nb < 0 || nb > 127)
 		std::cout << "impossible" << std::endl;
+	else if (nb < 32 || nb == 126)
+		std::cout << "Non displayable" << std::endl;
 	else
-		std::cout << "'" << literal[0] << "'" << std::endl;
+		std::cout << "'" << static_cast<char>(nb) << "'" << std::endl;
 	std::cout << "int: " << static_cast<int>(nb) << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(2) << nb << "f" << std::endl;
-	std::cout << "double: " << std::fixed << std::setprecision(2) << static_cast<double>(nb) << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(nb) << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(nb) << std::endl;
 }
 
 static void Cfloat(std::string literal)
 {
 	float nb = atof(literal.c_str());
 	std::cout << "char: ";
-	if (nb < 32 || nb == 126)
+	if (nb < 0 || nb > 127)
+		std::cout << "Impossible" << std::endl;
+	else if (nb < 32 || nb == 126)
 		std::cout << "Non displayable" << std::endl;
-	else if (nb < 0 || nb > 127)
-		std::cout << "impossible" << std::endl;
 	else
-		std::cout << "'" << literal[0] << "'" << std::endl;
+		std::cout << "'" << static_cast<char>(nb) << "'" << std::endl;
 	std::cout << "int: " << static_cast<int>(nb) << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(2) << nb << "f" << std::endl;
-	std::cout << "double: " << std::fixed << std::setprecision(2) << static_cast<double>(nb) << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(1) << nb << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(nb) << std::endl;
 }
 
-static void Dconvert(std::string literal)
+static void Cdouble(std::string literal)
 {
 	double nb = atof(literal.c_str());
 	std::cout << "char: ";
-	if (nb < 32 || nb == 126)
+	if (nb < 0 || nb > 127)
+		std::cout << "Impossible" << std::endl;
+	else if (nb < 32 || nb == 126)
 		std::cout << "Non displayable" << std::endl;
-	else if (nb < 0 || nb > 127)
-		std::cout << "impossible" << std::endl;
 	else
 		std::cout << "'" << literal[0] << "'" << std::endl;
 	std::cout << "int: " << static_cast<int>(nb) << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(2) << static_cast<float>(nb) << "f" << std::endl;
-	std::cout << "double: " << std::fixed << std::setprecision(2) << nb << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(nb) << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(1) << nb << std::endl;
 }
 
-static void MIconvert()
+static void CInf(std::string literal)
 {
-	std::cout << "char: impossible" << std::endl;
-	std::cout << "int: " << INT_MIN << std::endl;
-	std::cout << "float: " << __FLT_MIN__ << std::endl;
-	std::cout << "double: " << __DBL_MIN__ << std::endl;
+	double nb = atof(literal.c_str());
+	std::cout << "char: Impossible" << std::endl;
+	std::cout << "int: Impossible" << std::endl;
+	std::cout << "float: " << std::fixed << static_cast<float>(nb) << "f" << std::endl;
+	std::cout << "double: " << nb << std::endl;
 }
 
-static void MXconvert()
+static void CNan()
 {
-	std::cout << "char: impossible" << std::endl;
-	std::cout << "int: " << INT_MAX << std::endl;
-	std::cout << "float: " << __FLT_MAX__ << std::endl;
-	std::cout << "double: " << __DBL_MAX__ << std::endl;
-}
-
-static void Econvert()
-{
-	std::cout << "char: impossible" << std::endl;
-	std::cout << "int: " << 0 << std::endl;
-	std::cout << "float: " << 0 << std::endl;
-	std::cout << "double: " << 0 << std::endl;
+	std::cout << "char: Impossible " << std::endl;
+	std::cout << "int: Impossible" << std::endl;
+	std::cout << "float : nanf" << std::endl;
+	std::cout << "double: nan" << std::endl; 
 }
 
 void	ScalarConverter::convert(std::string const &literal)
 {
 	if (literal.length() == 1 && !isdigit(literal[0]))
 		Cchar(literal);
+	else if (std::isfinite(atof(literal.c_str())) || atof(literal.c_str()) < __FLT_MIN__ || atof(literal.c_str()) > __FLT_MAX__)
+		Cerror();
 	else if (literal == "nan" || literal == "nanf")
-		Econvert();
-	else if (literal == "-inff" ||literal == "-inf")
-		MIconvert();
-	else if (literal == "+inff" || literal == "+inf" || literal == "inf" || literal == "inff")
-		MXconvert();
+		CNan();
+	else if (literal == "+inff" || literal == "+inf" || literal == "inf" || literal == "inff" || literal == "-inf" ||
+		literal == "-inff")
+		CInf(literal);
 	else if (literal[literal.length() - 1] == 'f')
 	{
 		long unsigned int i = 0;
@@ -117,7 +119,7 @@ void	ScalarConverter::convert(std::string const &literal)
 		if (i == literal.length() - 1)
 			Cfloat(literal);
 		else
-			Econvert();
+			Cerror();
 	}
 	else if (literal.find('.') != std::string::npos)
 	{
@@ -125,12 +127,12 @@ void	ScalarConverter::convert(std::string const &literal)
 		while (std::isdigit(literal[i]) || literal[i] == '.')
 			i++;
 		if (i == literal.length())
-			Dconvert(literal);
+			Cdouble(literal);
 		else
-			Econvert();
+			Cerror();
 	}
-	else if (std::isdigit(literal[0]))
+	else if (((literal[0] == '+' || literal[0] == '-') && std::isdigit(literal[1])) || std::isdigit(literal[0]))
 		Cint(literal);
 	else
-		Econvert();
+		Cerror();
 }

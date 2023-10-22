@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 18:07:14 by khuynh            #+#    #+#             */
-/*   Updated: 2023/10/22 16:32:34 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/10/22 18:39:44 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <iostream>
 # include <string>
 # include <iomanip>
+# include <cmath>
+# include <cstdlib>
 # include <limits.h>
 
 class ScalarConverter
