@@ -177,7 +177,20 @@ item -> usually complex data struct or Object
 concept used for data storage, network communication, etc.
 
 
+[[[[ CPP 07 ]]]]
 
+Function template
+generic functions that work with various data types
 
+template <typename T>
+T MyFunction(T param) {
+    // Function code that works with the generic type T
+    return param;
+}
 
+can add-in specialized implementations: 
 
+template <>
+const char* MyFunction<const char*>(const char* param) {
+    return "Specialized for const char*";
+}
