@@ -157,3 +157,27 @@ nested exception class template
 
 only one specific type of casting
 scalar type = single value, simple type (int, float, bool, char, etc.)
+
+-----------------+---------+----------+---------+------------+--------------+--------------------+----------------------+---------------|
+    Cast         |  Conv . |  Reint . |  Upcast |  Downcast  |  Type qual . |  Semantics check   |   Reliable at run    | tested at run |
+-----------------+---------+----------+---------+------------+--------------+--------------------+----------------------+---------------|
+implicit         |   YES   |          |   YES   |            |              |        YES         |        YES           |               |
+static_cast      |   YES   |          |   YES   |    YES     |              |        YES         |                      |               |
+dynamic_cast     |         |          |   YES   |    YES     |              |        YES         |        YES           |       YES     |
+const_cast       |         |          |         |            |      YES     |                    |                      |               |
+reinterpret_cast |         |   YES    |   YES   |    YES     |              |                    |                      |               |
+-----------------+---------+----------+---------+------------+--------------+--------------------+----------------------+---------------|
+
+ex01
+Serialize = convert an item into a byte sequence, can be streamed after
+Deserialize = reconstruct the convert data into its original form
+
+item -> usually complex data struct or Object
+
+concept used for data storage, network communication, etc.
+
+
+
+
+
+
