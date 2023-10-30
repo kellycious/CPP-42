@@ -194,3 +194,15 @@ template <>
 const char* MyFunction<const char*>(const char* param) {
     return "Specialized for const char*";
 }
+
+[[[[ CPP 08 ]]]]
+
+Containers
+1/ Vector: dynamic array can grow and shrink in size, fast random access
+2/ List: double-linked, each element points to next and previous one, insertion/deletion possible
+3/ Deque: Hybrid vector + queue, efficient insertion and deletion at both ends
+4/ Map: key-value pairs, fast lookups
+5/ Set: unique elements, no duplicate
+6/ Stack: last in, first out data struct
+7/ Queue: first in, first out
+
