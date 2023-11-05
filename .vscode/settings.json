@@ -74,7 +74,8 @@
 	"numbers": "cpp",
 	"ranges": "cpp",
 	"span": "cpp",
-	"filesystem": "cpp"
+	"filesystem": "cpp",
+	"list": "cpp"
 },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

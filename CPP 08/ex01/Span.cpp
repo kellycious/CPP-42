@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:53:49 by khuynh            #+#    #+#             */
-/*   Updated: 2023/11/05 17:44:25 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/11/05 18:54:48 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ void	Span::addNumber(int n)
 		throw Span::Maxnb();
 	this->array.push_back(n);
 	this->size++;
+}
+
+void	Span::betterAdd(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	if (std::distance(begin, end) > int (this->N - this->size))
+		throw Span::Maxnb();
+	array.insert(array.end(), begin, end);
 }
 
 int		Span::shortestSpan()

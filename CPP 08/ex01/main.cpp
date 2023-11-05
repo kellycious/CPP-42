@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:53:07 by khuynh            #+#    #+#             */
-/*   Updated: 2023/11/05 17:51:55 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/11/05 18:59:51 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,26 @@ int main()
 	{
 		array3.addNumber(14);
 		std::cout << "Longest span: " << array3.longestSpan() << std::endl;		
+	}
+	catch(const std::exception & e) 
+	{
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+
+	std::cout << "------------ TEST 4 : BETTER ADD ------------" << std::endl;
+	Span	array4(1000);
+
+	try
+	{
+		std::vector<int> Barray;
+		for (int i = 0; i < 100; ++i)
+			Barray.push_back(i);
+		
+		array4.betterAdd(Barray.begin(), Barray.end());
+
+		std::cout << "Longest span: " << array4.longestSpan() << std::endl;
+		std::cout << "Shortest span: " << array4.shortestSpan() << std::endl;
 	}
 	catch(const std::exception & e) 
 	{

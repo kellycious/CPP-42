@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 17:53:16 by khuynh            #+#    #+#             */
-/*   Updated: 2023/11/05 17:57:10 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/11/05 20:22:47 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,24 @@
 # include <iostream>
 # include <stack>
 
-class MutantStack
+template <typename T>
+class MutantStack : public std::stack<T>
 {
 	public:
-
-	protected:
-		stack<int> stack;
+		MutantStack(){};
+		MutantStack(MutantStack const &cpy) : MutantStack::stack(cpy) {};
+		virtual ~MutantStack(){};
+		
+		MutantStack &operator=(MutantStack const &src)
+		{
+			if (this != &src)
+        		std::stack<T>::operator=(src);
+			return (*this);
+		}
+		
+		typedef typename std::stack<T>::container_type::iterator	iterator;
+		iterator	begin(){ return (this->c.begin());}
+		iterator	end(){ return (this->c.end());}
 };
 
 #endif
