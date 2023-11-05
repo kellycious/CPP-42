@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:53:07 by khuynh            #+#    #+#             */
-/*   Updated: 2023/10/31 23:52:17 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/11/05 17:51:55 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,53 @@
 
 int main()
 {
-	Span sp = Span(5);
-	
-	sp.addNumber(6);
-	sp.addNumber(3);
-	sp.addNumber(17);
-	sp.addNumber(9);
-	sp.addNumber(11);
-	
-	std::cout << sp.shortestSpan() << std::endl;
-	std::cout << sp.longestSpan() << std::endl;
-	return 0;
+	std::cout << std::endl;
+	std::cout << "------------ TEST 1 : WORKING ------------" << std::endl;
+	Span array(10);
+
+	try
+	{
+		array.addNumber(14);
+		array.addNumber(4);
+		array.addNumber(100);
+		array.addNumber(50);
+
+		std::cout << "Longest span: " << array.longestSpan() << std::endl;
+		std::cout << "Shortest span: " << array.shortestSpan() << std::endl;
+	}
+	catch(const std::exception & e) 
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	std::cout << std::endl;
+
+	std::cout << "------------ TEST 2 : CAN'T ADD NUMBER ------------" << std::endl;
+	Span array2(1);
+
+	try
+	{
+		array2.addNumber(14);
+		array2.addNumber(4);
+	}
+	catch(const std::exception & e) 
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	std::cout << std::endl;
+
+	std::cout << "------------ TEST 3 : ARRAY TOO SMALL OR EMPTY  ------------" << std::endl;
+	Span array3(2);
+
+	try
+	{
+		array3.addNumber(14);
+		std::cout << "Longest span: " << array3.longestSpan() << std::endl;		
+	}
+	catch(const std::exception & e) 
+	{
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << std::endl;
 }

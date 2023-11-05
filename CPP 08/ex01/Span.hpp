@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:54:02 by khuynh            #+#    #+#             */
-/*   Updated: 2023/11/01 00:04:55 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/11/05 17:51:10 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define SPAN_HPP
 
 # include <iostream>
-# include <stdexcept>
+# include <vector>
+# include <exception>
+# include <limits>
 
 class Span
 {
@@ -28,19 +30,29 @@ class Span
 		void	addNumber(int n);
 		int		shortestSpan();
 		int		longestSpan();
-
-		class NoSpan : public std::exception
+		
+		class Nospan : public std::exception
 		{
 			public:
 				virtual const char *what() const throw()
 				{
-					return "No span can be found";
+					return "Empty array or only one nb stored, thus no span found";
+				}
+		};
+
+		class Maxnb : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{
+					return "Cannot add nb, no more available space";
 				}
 		};
 		
 	protected:
-		unsigned int	N;
-		unsigned int	size;
+		unsigned int				N;
+		unsigned int				size;
+		std::vector<int>	array;
 };
 
 #endif
