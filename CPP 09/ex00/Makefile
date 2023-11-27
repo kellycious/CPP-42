@@ -1,7 +1,7 @@
 
 #1 --- FILE
 
-NAME = Bitcoin
+NAME = btc
 FILE = main.cpp BitcoinExchange.cpp
 
 OBJS :=  	${addprefix ./OBJ/,${FILE:%.cpp=%.o}}
