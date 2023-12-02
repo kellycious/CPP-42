@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 00:23:20 by khuynh            #+#    #+#             */
-/*   Updated: 2023/12/01 02:19:57 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/12/02 02:07:18 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static int strtoint(std::string const &str)
 
 void FJMI::input_parse(int ac, char **av)
 {
-	if (ac < 3)
-		throw std::invalid_argument("Invalid input: At least 2 nb is required");
+	if (ac < 2)
+		throw std::invalid_argument("Invalid input: Numbers are required");
 	for (int i = 1; i < ac; ++i)
 	{
 		std::string inputnb(av[i]);
@@ -73,141 +73,126 @@ void FJMI::print_deque()
 	std::cout << std::endl;
 }
 
+// Function to compare pairs based on their maximum value
+
+static bool paircomp(const std::pair<int, int> &a, const std::pair<int, int> &b)
+{
+	return std::max(a.first, a.second) < std::max(b.first, b.second);
+}
+// Recursive function to sort the sequence by the largest pair value
+
+static void recursort(std::vector<std::pair<int, int> > &vecpair, size_t start, size_t end)
+{
+	if (start < end)
+	{
+		size_t max = start;
+		for (size_t i = start + 1; i < end; ++i)
+		{
+			if (paircomp(vecpair[i], vecpair[max]))
+				max = i;
+		}
+		std::swap(vecpair[start], vecpair[max]);
+		recursort(vecpair, start + 1, end);
+	}
+}
+
+// Function to calculate the nth Jacobsthal-Lucas number which works in O(Log n) time
+
+static int jcbnb(int nb)
+{
+	if (nb == 0)
+		return 0;
+	if (nb == 1)
+		return 1;
+	return jcbnb(nb - 1) + 2 * jcbnb(nb - 2);
+}
+
+// Binary search function to find the insertion point 
+
+static size_t binsearch(const std::vector<int>& vec, int nb)
+{
+	size_t start = 0;
+	size_t end = vec.size();
+	while (start < end)
+	{
+		size_t mid = start + (end - start) / 2;
+		if (vec[mid] < nb)
+			start = mid + 1;
+		else
+			end = mid;
+	}
+	return start;
+}
+
 void FJMI::sort_vector()
 {
-	std::vector<int> tmp;
-	std::vector<int> tmp2;
-	std::vector<int> final;
+	// make pairs, if odd, store it
+	std::vector<std::pair<int, int> > vecpair;
 
-	std::vector<int>::iterator it = _vec.begin();
-	if (_size % 2 == 0)
+	size_t i = 0;
+	for (; i < _size - 1; i+=2)
+		vecpair.push_back(std::make_pair(_vec[i], _vec[i + 1]));
+	if (i < _size)
+		_odd = _vec[i];
+
+	std::cout << "Pairs display" << std::endl;
+	for (size_t i = 0; i < vecpair.size(); ++i)
+		std::cout << vecpair[i].first << " " << vecpair[i].second << std::endl;
+	std::cout << "Odd: " << _odd << std::endl;
+
+	// sort index of each pair
+	for (size_t i = 0; i < vecpair.size(); ++i)
 	{
-		for (size_t i = 0; i < _size / 2; ++i)
-		{
-			tmp.push_back(*it);
-			++it;
-		}
-		for (size_t i = _size / 2; i < _size; ++i)
-		{
-			tmp2.push_back(*it);
-			++it;
-		}
+		if (vecpair[i].first > vecpair[i].second)
+			std::swap(vecpair[i].first, vecpair[i].second);
 	}
-	else
+
+	std::cout << "Pairs display after index sort" << std::endl;
+	for (size_t i = 0; i < vecpair.size(); ++i)
+		std::cout << vecpair[i].first << " " << vecpair[i].second << std::endl;
+		
+	// sort by largest pair value
+	recursort(vecpair, 0, vecpair.size());
+
+	std::cout << "Pairs display after sort by largest pairs" << std::endl;
+	for (size_t i = 0; i < vecpair.size(); ++i)
+		std::cout << vecpair[i].first << " " << vecpair[i].second << std::endl;
+
+	// push highest value of each pair to the initial vector by cleaning it first
+	_vec.clear();
+	for (size_t i = 0; i < vecpair.size(); ++i)
+		_vec.push_back(vecpair[i].second);
+
+	std::cout << "Vector display after push highest value of each pair" << std::endl;
+	for (size_t i = 0; i < _vec.size(); ++i)
+		std::cout << _vec[i] << " ";
+	std::cout << std::endl;
+
+	// optimal = remaining numbers + odd if exist
+
+	std::vector<int> optimal;
+
+	for (size_t i = 0; i < vecpair.size(); ++i)
+		optimal.push_back(vecpair[i].first);
+	if (_odd)
+		optimal.push_back(_odd);
+
+	// calculate jcbnb for each optimal number
+		
+	std::vector<int> jcbvec;
+	for (size_t i = 0; i < optimal.size(); ++i)
+		jcbvec.push_back(jcbnb(optimal[i]));
+
+	// binary search to insert
+
+	for (size_t i = 0; i < optimal.size(); ++i)
 	{
-		for (size_t i = 0; i < _size / 2 + 1; ++i)
-		{
-			tmp.push_back(*it);
-			++it;
-		}
-		for (size_t i = _size / 2 + 1; i < _size; ++i)
-		{
-			tmp2.push_back(*it);
-			++it;
-		}
+		size_t insertionIndex = binsearch(_vec, jcbvec[i]);
+		_vec.insert(_vec.begin() + insertionIndex, optimal[i]);
 	}
-	std::sort(tmp.begin(), tmp.end());
-	std::sort(tmp2.begin(), tmp2.end());
-	while (!tmp.empty() && !tmp2.empty())
-	{
-		if (tmp.front() < tmp2.front())
-		{
-			final.push_back(tmp.front());
-			tmp.erase(tmp.begin());
-		}
-		else
-		{
-			final.push_back(tmp2.front());
-			tmp2.erase(tmp2.begin());
-		}
-	}
-	if (!tmp.empty() && tmp2.empty())
-	{
-		while (!tmp.empty())
-		{
-			final.push_back(tmp.front());
-			tmp.erase(tmp.begin());
-		}
-	}
-	else if (tmp.empty() && !tmp2.empty())
-	{
-		while (!tmp2.empty())
-		{
-			final.push_back(tmp2.front());
-			tmp2.erase(tmp2.begin());
-		}
-	}
-	_vec = final;
 }
 
-void FJMI::sort_deque()
-{
-	std::deque<int> tmp;
-	std::deque<int> tmp2;
-	std::deque<int> final;
-
-	std::deque<int>::iterator it = _deq.begin();
-	if (_size % 2 == 0)
-	{
-		for (size_t i = 0; i < _size / 2; ++i)
-		{
-			tmp.push_back(*it);
-			++it;
-		}
-		for (size_t i = _size / 2; i < _size; ++i)
-		{
-			tmp2.push_back(*it);
-			++it;
-		}
-	}
-	else
-	{
-		for (size_t i = 0; i < _size / 2 + 1; ++i)
-		{
-			tmp.push_back(*it);
-			++it;
-		}
-		for (size_t i = _size / 2 + 1; i < _size; ++i)
-		{
-			tmp2.push_back(*it);
-			++it;
-		}
-	}
-	std::sort(tmp.begin(), tmp.end());
-	std::sort(tmp2.begin(), tmp2.end());
-	while (!tmp.empty() && !tmp2.empty())
-	{
-		if (tmp.front() < tmp2.front())
-		{
-			final.push_back(tmp.front());
-			tmp.erase(tmp.begin());
-		}
-		else
-		{
-			final.push_back(tmp2.front());
-			tmp2.erase(tmp2.begin());
-		}
-	}
-	if (!tmp.empty() && tmp2.empty())
-	{
-		while (!tmp.empty())
-		{
-			final.push_back(tmp.front());
-			tmp.erase(tmp.begin());
-		}
-	}
-	else if (tmp.empty() && !tmp2.empty())
-	{
-		while (!tmp2.empty())
-		{
-			final.push_back(tmp2.front());
-			tmp2.erase(tmp2.begin());
-		}
-	}
-	_deq = final;
-}
-
-void FJMI::fordjohnson_vector()
+/*void FJMI::fordjohnson_vector()
 {
 	clock_t start = clock();
 	sort_vector();
@@ -223,5 +208,5 @@ void FJMI::fordjohnson_deque()
 	clock_t end = clock();
 	_deqtime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
 	std::cout << "Deque time: " << _deqtime << std::endl;
-}
+}*/
 

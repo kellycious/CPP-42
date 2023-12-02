@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 00:23:30 by khuynh            #+#    #+#             */
-/*   Updated: 2023/12/01 02:17:54 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/12/02 00:30:10 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <deque>
 # include <vector>
 # include <ctime>
+# include <algorithm>
 
 class FJMI
 {
@@ -41,6 +42,7 @@ class FJMI
 		std::vector<int> _vec;
 		std::deque<int> _deq;
 		size_t 			_size;
+		int 			_odd;
 		double 			_vectime;
 		double 			_deqtime;
 };
