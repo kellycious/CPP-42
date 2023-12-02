@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 00:23:20 by khuynh            #+#    #+#             */
-/*   Updated: 2023/12/02 02:07:18 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/12/02 02:16:54 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,7 @@ void FJMI::sort_vector()
 
 	for (size_t i = 0; i < vecpair.size(); ++i)
 		optimal.push_back(vecpair[i].first);
-	if (_odd)
+	if (_odd != 0)
 		optimal.push_back(_odd);
 
 	// calculate jcbnb for each optimal number
@@ -183,11 +183,16 @@ void FJMI::sort_vector()
 	for (size_t i = 0; i < optimal.size(); ++i)
 		jcbvec.push_back(jcbnb(optimal[i]));
 
+	for (size_t i = 0; i < jcbvec.size(); ++i)
+		std::cout << jcbvec[i] << " ";
+	std::cout << std::endl;
+
 	// binary search to insert
 
 	for (size_t i = 0; i < optimal.size(); ++i)
 	{
 		size_t insertionIndex = binsearch(_vec, jcbvec[i]);
+		std::cout << "Insertion index: " << insertionIndex << std::endl;
 		_vec.insert(_vec.begin() + insertionIndex, optimal[i]);
 	}
 }
