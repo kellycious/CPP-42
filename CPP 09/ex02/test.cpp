@@ -1,7 +1,4 @@
-static bool paircomp(const std::pair<int, int> &a, const std::pair<int, int> &b)
-{
-	return std::max(a.first, a.second) < std::max(b.first, b.second);
-}
+
 // Recursive function to sort the sequence by the largest pair value
 
 static void recursort(std::vector<std::pair<int, int> > &vecpair, size_t start, size_t end)
@@ -11,7 +8,7 @@ static void recursort(std::vector<std::pair<int, int> > &vecpair, size_t start, 
 		size_t max = start;
 		for (size_t i = start + 1; i < end; ++i)
 		{
-			if (paircomp(vecpair[i], vecpair[max]))
+			if (std::max(vecpair[i].first, vecpair[i].second) < std::max(vecpair[max].first, vecpair[max].second))
 				max = i;
 		}
 		std::swap(vecpair[max], vecpair[end - 1]);
@@ -35,11 +32,11 @@ static int jcbnb(int nb)
 static size_t binsearch(const std::vector<int>& vec, int nb)
 {
 	size_t start = 0;
-	size_t end = vec.size();
+	size_t end = _size;
 	while (start < end)
 	{
 		size_t mid = start + (end - start) / 2;
-		if (vec[mid] < nb)
+		if (vec[mid] <= nb)
 			start = mid + 1;
 		else
 			end = mid;
@@ -71,15 +68,16 @@ void FJMI::sort_vector()
 	// push highest value of each pair to the initial vector by cleaning it first
 	_vec.clear();
 	for (size_t i = 0; i < vecpair.size(); ++i)
-		_vec.push_back(vecpair[i].second);
+		_vec.push_back(vecpair[i].first);
+
 
 	// optimal = remaining numbers + odd if exist
 
 	std::vector<int> optimal;
 
 	for (size_t i = 0; i < vecpair.size(); ++i)
-		optimal.push_back(vecpair[i].first);
-	if (_odd)
+		optimal.push_back(vecpair[i].second);
+	if (_odd != 0)
 		optimal.push_back(_odd);
 
 	// calculate jcbnb for each optimal number
@@ -87,6 +85,7 @@ void FJMI::sort_vector()
 	std::vector<int> jcbvec;
 	for (size_t i = 0; i < optimal.size(); ++i)
 		jcbvec.push_back(jcbnb(optimal[i]));
+
 
 	// binary search to insert
 

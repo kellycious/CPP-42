@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 00:23:20 by khuynh            #+#    #+#             */
-/*   Updated: 2023/12/02 02:16:54 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/12/03 23:43:14 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,6 @@ void FJMI::print_deque()
 	std::cout << std::endl;
 }
 
-// Function to compare pairs based on their maximum value
-
-static bool paircomp(const std::pair<int, int> &a, const std::pair<int, int> &b)
-{
-	return std::max(a.first, a.second) < std::max(b.first, b.second);
-}
 // Recursive function to sort the sequence by the largest pair value
 
 static void recursort(std::vector<std::pair<int, int> > &vecpair, size_t start, size_t end)
@@ -88,11 +82,11 @@ static void recursort(std::vector<std::pair<int, int> > &vecpair, size_t start, 
 		size_t max = start;
 		for (size_t i = start + 1; i < end; ++i)
 		{
-			if (paircomp(vecpair[i], vecpair[max]))
+			if (std::max(vecpair[i].first, vecpair[i].second) < std::max(vecpair[max].first, vecpair[max].second))
 				max = i;
 		}
-		std::swap(vecpair[start], vecpair[max]);
-		recursort(vecpair, start + 1, end);
+		std::swap(vecpair[max], vecpair[end - 1]);
+		recursort(vecpair, start, end - 1);
 	}
 }
 
@@ -113,10 +107,11 @@ static size_t binsearch(const std::vector<int>& vec, int nb)
 {
 	size_t start = 0;
 	size_t end = vec.size();
+	std::cout << "end = " << end << std::endl;
 	while (start < end)
 	{
 		size_t mid = start + (end - start) / 2;
-		if (vec[mid] < nb)
+		if (vec[mid] <= nb)
 			start = mid + 1;
 		else
 			end = mid;
@@ -137,7 +132,8 @@ void FJMI::sort_vector()
 
 	std::cout << "Pairs display" << std::endl;
 	for (size_t i = 0; i < vecpair.size(); ++i)
-		std::cout << vecpair[i].first << " " << vecpair[i].second << std::endl;
+		std::cout << "(" << vecpair[i].first << "," << vecpair[i].second << ") ";
+	std::cout << std::endl;
 	std::cout << "Odd: " << _odd << std::endl;
 
 	// sort index of each pair
@@ -149,19 +145,21 @@ void FJMI::sort_vector()
 
 	std::cout << "Pairs display after index sort" << std::endl;
 	for (size_t i = 0; i < vecpair.size(); ++i)
-		std::cout << vecpair[i].first << " " << vecpair[i].second << std::endl;
+		std::cout << "(" << vecpair[i].first << "," << vecpair[i].second << ") ";
+	std::cout << std::endl;
 		
 	// sort by largest pair value
 	recursort(vecpair, 0, vecpair.size());
 
 	std::cout << "Pairs display after sort by largest pairs" << std::endl;
 	for (size_t i = 0; i < vecpair.size(); ++i)
-		std::cout << vecpair[i].first << " " << vecpair[i].second << std::endl;
+		std::cout << "(" << vecpair[i].first << "," << vecpair[i].second << ") ";
+	std::cout << std::endl;
 
 	// push highest value of each pair to the initial vector by cleaning it first
 	_vec.clear();
 	for (size_t i = 0; i < vecpair.size(); ++i)
-		_vec.push_back(vecpair[i].second);
+		_vec.push_back(vecpair[i].first);
 
 	std::cout << "Vector display after push highest value of each pair" << std::endl;
 	for (size_t i = 0; i < _vec.size(); ++i)
@@ -173,27 +171,31 @@ void FJMI::sort_vector()
 	std::vector<int> optimal;
 
 	for (size_t i = 0; i < vecpair.size(); ++i)
-		optimal.push_back(vecpair[i].first);
+		optimal.push_back(vecpair[i].second);
 	if (_odd != 0)
 		optimal.push_back(_odd);
 
 	// calculate jcbnb for each optimal number
-		
-	std::vector<int> jcbvec;
-	for (size_t i = 0; i < optimal.size(); ++i)
-		jcbvec.push_back(jcbnb(optimal[i]));
 
-	for (size_t i = 0; i < jcbvec.size(); ++i)
-		std::cout << jcbvec[i] << " ";
+	std::vector<std::pair<int, int> > optijcb_pairs;
+	for (size_t i = 0; i < optimal.size(); ++i)
+		optijcb_pairs.push_back(std::make_pair(optimal[i], jcbnb(optimal[i])));
+
+	std::cout << "Remaining nb with Jcb nb" << std::endl;
+	for (size_t i = 0; i < optijcb_pairs.size(); ++i)
+		std::cout << "(" << optijcb_pairs[i].first << "," << optijcb_pairs[i].second << ") ";
 	std::cout << std::endl;
 
-	// binary search to insert
+	std::sort(optijcb_pairs.begin(), optijcb_pairs.end());
 
+	// binary search to insert
+	if (!std::is_sorted(_vec.begin(), _vec.end()))
+    	std::sort(_vec.begin(), _vec.end());
 	for (size_t i = 0; i < optimal.size(); ++i)
 	{
-		size_t insertionIndex = binsearch(_vec, jcbvec[i]);
-		std::cout << "Insertion index: " << insertionIndex << std::endl;
-		_vec.insert(_vec.begin() + insertionIndex, optimal[i]);
+		size_t insertionIndex = binsearch(_vec, optijcb_pairs[i].second);
+		std::cout << "Insert: " << optijcb_pairs[i].first << " at position " << insertionIndex << std::endl;
+		_vec.insert(_vec.begin() + insertionIndex, optijcb_pairs[i].first);
 	}
 }
 
