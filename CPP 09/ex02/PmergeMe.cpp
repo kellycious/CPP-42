@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 00:23:20 by khuynh            #+#    #+#             */
-/*   Updated: 2023/12/04 01:02:54 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/12/04 01:09:20 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,43 +126,22 @@ void FJMI::sort_vector()
 	if (i < _size)
 		_odd = _vec[i];
 
-	std::cout << "Pairs display" << std::endl;
-	for (size_t i = 0; i < vecpair.size(); ++i)
-		std::cout << "(" << vecpair[i].first << "," << vecpair[i].second << ") ";
-	std::cout << std::endl;
-	std::cout << "Odd: " << _odd << std::endl;
-
 	// sort index of each pair
 	for (size_t i = 0; i < vecpair.size(); ++i)
 	{
 		if (vecpair[i].first > vecpair[i].second)
 			std::swap(vecpair[i].first, vecpair[i].second);
 	}
-
-	std::cout << "Pairs display after index sort" << std::endl;
-	for (size_t i = 0; i < vecpair.size(); ++i)
-		std::cout << "(" << vecpair[i].first << "," << vecpair[i].second << ") ";
-	std::cout << std::endl;
 		
 	// sort by largest pair value
 	recursort(vecpair, 0, vecpair.size());
-
-	std::cout << "Pairs display after sort by largest pairs" << std::endl;
-	for (size_t i = 0; i < vecpair.size(); ++i)
-		std::cout << "(" << vecpair[i].first << "," << vecpair[i].second << ") ";
-	std::cout << std::endl;
 
 	// push highest value of each pair to the initial vector by cleaning it first
 	_vec.clear();
 	for (size_t i = 0; i < vecpair.size(); ++i)
 		_vec.push_back(vecpair[i].first);
 
-	std::cout << "Vector display after push highest value of each pair" << std::endl;
-	for (size_t i = 0; i < _vec.size(); ++i)
-		std::cout << _vec[i] << " ";
-	std::cout << std::endl;
-
-	// optimal = remaining numbers + odd if exist
+	// optimal = remaining numbers + odd if exist 
 
 	std::vector<int> optimal;
 
@@ -171,9 +150,9 @@ void FJMI::sort_vector()
 	if (_odd != 0)
 		optimal.push_back(_odd);
 
-	std::cout << "ok" << std::endl;
-
 	std::sort(_vec.begin(), _vec.end());
+
+	// insert optimal values to original vector by binary insertion
 
 	while (!optimal.empty())
 	{
@@ -189,8 +168,8 @@ void FJMI::fordjohnson_vector()
 	clock_t start = clock();
 	sort_vector();
 	clock_t end = clock();
-	_vectime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
-	std::cout << "Vector time: " << _vectime << std::endl;
+	_vectime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
+	std::cout << "Vector time: " << _vectime << "ms" << std::endl;
 }
 /*
 void FJMI::fordjohnson_deque()
@@ -198,7 +177,7 @@ void FJMI::fordjohnson_deque()
 	clock_t start = clock();
 	sort_deque();
 	clock_t end = clock();
-	_deqtime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
-	std::cout << "Deque time: " << _deqtime << std::endl;
+	_deqtime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
+	std::cout << "Deque time: " << _deqtime << "ms" << std::endl;
 }*/
 
