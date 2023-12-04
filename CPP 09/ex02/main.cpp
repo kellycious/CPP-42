@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 01:18:15 by khuynh            #+#    #+#             */
-/*   Updated: 2023/12/04 01:05:51 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/12/04 15:04:21 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,14 @@ int main(int ac, char **av)
 	try
 	{
 		fjmi.input_parse(ac, av);
-		std::cout << "Before: ";
+		std::cout << "Input: ";
 		fjmi.print_vector();
 		fjmi.fordjohnson_vector();
-		std::cout << "After: ";
+		fjmi.fordjohnson_deque();
+		std::cout << "After - vector: ";
 		fjmi.print_vector();
+		std::cout << "After - deque: ";
+		fjmi.print_deque();
 	}
 	catch (std::exception &e)
 	{
