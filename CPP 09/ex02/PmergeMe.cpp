@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 00:23:20 by khuynh            #+#    #+#             */
-/*   Updated: 2023/12/04 15:03:44 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/12/04 15:06:23 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,6 @@ void FJMI::sort_vector()
 	_vec.clear();
 	for (size_t i = 0; i < vecpair.size(); ++i)
 		_vec.push_back(vecpair[i].first);
-	
 	// optimal = remaining numbers + odd if exist 
 
 	std::vector<int> optimal;
