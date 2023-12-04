@@ -6,7 +6,7 @@
 /*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 00:23:20 by khuynh            #+#    #+#             */
-/*   Updated: 2023/12/03 23:43:14 by khuynh           ###   ########.fr       */
+/*   Updated: 2023/12/04 01:02:54 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,33 +90,29 @@ static void recursort(std::vector<std::pair<int, int> > &vecpair, size_t start, 
 	}
 }
 
-// Function to calculate the nth Jacobsthal-Lucas number which works in O(Log n) time
-
-static int jcbnb(int nb)
-{
-	if (nb == 0)
-		return 0;
-	if (nb == 1)
-		return 1;
-	return jcbnb(nb - 1) + 2 * jcbnb(nb - 2);
-}
-
 // Binary search function to find the insertion point 
 
-static size_t binsearch(const std::vector<int>& vec, int nb)
+static size_t binsearch(const std::vector<int>& vec, int nb, int left, int right)
 {
-	size_t start = 0;
-	size_t end = vec.size();
-	std::cout << "end = " << end << std::endl;
-	while (start < end)
-	{
-		size_t mid = start + (end - start) / 2;
-		if (vec[mid] <= nb)
-			start = mid + 1;
-		else
-			end = mid;
-	}
-	return start;
+	if (abs(left - right) <= 1)
+		return (left);
+	
+	size_t mid = (left + right) / 2 - 1;
+	
+	if (nb > vec[mid])
+		return (binsearch(vec, nb, mid + 1, right));
+	else
+		return (binsearch(vec, nb, left, mid));
+}
+
+static void	specialinsert(std::vector<int> &vec, int value, size_t index)
+{
+	std::vector<int>::iterator it = vec.begin() + index;
+	
+	if (value > vec[index])
+		it = vec.begin() + index + 1;
+
+	vec.insert(it, value);
 }
 
 void FJMI::sort_vector()
@@ -175,31 +171,20 @@ void FJMI::sort_vector()
 	if (_odd != 0)
 		optimal.push_back(_odd);
 
-	// calculate jcbnb for each optimal number
+	std::cout << "ok" << std::endl;
 
-	std::vector<std::pair<int, int> > optijcb_pairs;
-	for (size_t i = 0; i < optimal.size(); ++i)
-		optijcb_pairs.push_back(std::make_pair(optimal[i], jcbnb(optimal[i])));
+	std::sort(_vec.begin(), _vec.end());
 
-	std::cout << "Remaining nb with Jcb nb" << std::endl;
-	for (size_t i = 0; i < optijcb_pairs.size(); ++i)
-		std::cout << "(" << optijcb_pairs[i].first << "," << optijcb_pairs[i].second << ") ";
-	std::cout << std::endl;
-
-	std::sort(optijcb_pairs.begin(), optijcb_pairs.end());
-
-	// binary search to insert
-	if (!std::is_sorted(_vec.begin(), _vec.end()))
-    	std::sort(_vec.begin(), _vec.end());
-	for (size_t i = 0; i < optimal.size(); ++i)
+	while (!optimal.empty())
 	{
-		size_t insertionIndex = binsearch(_vec, optijcb_pairs[i].second);
-		std::cout << "Insert: " << optijcb_pairs[i].first << " at position " << insertionIndex << std::endl;
-		_vec.insert(_vec.begin() + insertionIndex, optijcb_pairs[i].first);
+		size_t InsertionIndex = binsearch(_vec, *(optimal.begin()), 0, _vec.size());
+		specialinsert(_vec, *(optimal.begin()), InsertionIndex);
+		optimal.erase(optimal.begin());
 	}
+
 }
 
-/*void FJMI::fordjohnson_vector()
+void FJMI::fordjohnson_vector()
 {
 	clock_t start = clock();
 	sort_vector();
@@ -207,7 +192,7 @@ void FJMI::sort_vector()
 	_vectime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
 	std::cout << "Vector time: " << _vectime << std::endl;
 }
-
+/*
 void FJMI::fordjohnson_deque()
 {
 	clock_t start = clock();
